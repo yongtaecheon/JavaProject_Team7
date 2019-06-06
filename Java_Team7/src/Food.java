@@ -10,9 +10,12 @@ public class Food {
 		double sugal;//´ç·ù
 		double na;//³ªÆ®·ý
 		
+		int a=0;
 		public Food()
 		{
 		Food ary[] = new Food[500];
 		}
+		
+		
 		
 }
