@@ -1,4 +1,4 @@
-
+import java.io.*;
 public class Food {
 		String name;
 		int kcal;
@@ -7,7 +7,7 @@ public class Food {
 		double fat;//지
 		double sugal;//당류
 		double na;//나트륨
-		Food(){
+		public Food(){
 		Food ary[] = new Food[500];
 		}
 		
