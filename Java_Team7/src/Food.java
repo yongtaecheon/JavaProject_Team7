@@ -10,4 +10,5 @@ public class Food {
 		Food(){
 		Food ary[] = new Food[500];
 		}
+		
 }
