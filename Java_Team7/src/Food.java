@@ -11,6 +11,7 @@ public class Food {
 		double sugal;//´ç·ù
 		double na;//³ªÆ®·ý
 		int a=0;
+		int b=0;
 		public Food()
 		{
 			
