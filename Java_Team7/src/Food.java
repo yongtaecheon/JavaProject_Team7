@@ -1,4 +1,6 @@
 
+import java.io.*;
+
 public class Food {
 		String name;
 		int kcal;
