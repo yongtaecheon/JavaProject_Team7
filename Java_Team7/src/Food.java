@@ -10,7 +10,8 @@ public class Food {
 		double sugal;//´ç·ù
 		double na;//³ªÆ®·ý
 		
-		public Food(){
+		public Food()
+		{
 		Food ary[] = new Food[500];
 		}
 		
