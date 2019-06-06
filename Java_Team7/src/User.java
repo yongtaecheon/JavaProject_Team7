@@ -15,7 +15,7 @@ public class User {
 		this.gender = gender;
 	}
 	public void getHeight() {
-		
+		int a=0;
 	}
 	
 }
