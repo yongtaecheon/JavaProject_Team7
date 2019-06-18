@@ -4,9 +4,9 @@ public class User {
    private double weight;
    private String gender;//m = male(남자), f = female(여자)
    private double BMI;
-   private double calory;
-   private String[] food;
-   private int foodsize;//food배열의 크기
+   double calory;
+   String[] food;
+   int foodsize;//food배열의 크기
    public User() {
       height = 0;
       weight = 0;
@@ -60,8 +60,8 @@ public class User {
    public void setFood(String foodName) {
 	   food[foodsize++]=foodName;
    }
-   public String[] getFood() {
-	   return food;
+   public String getFood() {
+	   return food[foodsize-1];
    }
    public void calculateBMI()
    {
