@@ -51,6 +51,7 @@ public class Login{
 		outputStream.println(u.getCalory());
 		outputStream.close();
 	}
+	
 	//이미 있으면 불러오고 없으면 새로운 텍스트 파일을 생성
 	public static void loadFile(String name, String password) {
 		User u = new User();
@@ -58,7 +59,8 @@ public class Login{
 		try {
 			inputStream = new Scanner(new FileInputStream(name+".txt"));
 			while(true) {
-				if((inputStream.next()).equals(password)) {
+				if((inputStream.next()).equals(password))
+				{
 					break;
 				}
 				else {
