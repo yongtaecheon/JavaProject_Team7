@@ -1,4 +1,14 @@
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.*;
 
 public class Login{
@@ -72,7 +82,8 @@ public class Login{
 			System.out.println("Error opening the File.");
 		}
 		outputStream.println(password);
-		System.out.println("키(m) 몸무게(kg) 성별(m/f) 입력:");
+		//System.out.println("키(m) 몸무게(kg) 성별(m/f) 입력:");
+		//keyboard부분을 gettext로 바꾸어 입력.
 		u.setHeight(keyboard.nextDouble());
 		u.setWeight(keyboard.nextDouble());
 		u.setGender(keyboard.next()); 
@@ -110,15 +121,71 @@ public class Login{
 					}
 				}
 				else {
-						System.out.println("잘못된 비밀번호 입니다.");
+						FailPW f=new FailPW();
+						f.setVisible(true);
 				}
 			inputStream.close();
 		}
 		catch(FileNotFoundException e){
-			System.out.println("새로운 사용자 이시군요! 계정을 새로 생성하겠습니다.");
-			createFile(name, password);
+			AddFile a = new AddFile();
+			a.setVisible(true);
+			//createFile(name, password);
 		}
 		return u;
 	}
 	
+	public static class FailPW extends JFrame{
+		public FailPW()
+		{
+			setSize(250,150);
+			setLayout(new BorderLayout());
+			getContentPane().setBackground(Color.RED);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JLabel text = new JLabel("             잘못된 비밀번호 입니다!");
+			add(text,BorderLayout.CENTER);
+		}
+	}
+
+	public static class AddFile extends JFrame{
+		public AddFile()
+		{
+			setSize(300,500);
+			setLayout(new BorderLayout());
+			getContentPane().setBackground(Color.WHITE);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			JLabel text = new JLabel("새로운 사용자이군요! 계정을 생성하겠습니다.");
+			
+			JPanel userpanel = new JPanel(new GridLayout(3,1));
+			
+			JPanel heightpanel = new JPanel(new FlowLayout());
+			JLabel heightlabel = new JLabel("키");
+			JTextField heighttext = new JTextField(10);
+			
+			JPanel weightpanel = new JPanel(new FlowLayout());
+			JLabel weightlabel = new JLabel("몸무게");
+			JTextField weighttext = new JTextField(10);
+
+			JPanel genderpanel = new JPanel(new FlowLayout());
+			JLabel genderlabel = new JLabel("성별(남:m / 여:f)");
+			JTextField gendertext = new JTextField(10);			
+			
+			heightpanel.add(heightlabel);
+			heightpanel.add(heighttext);
+			weightpanel.add(weightlabel);
+			weightpanel.add(weighttext);	
+			genderpanel.add(genderlabel);
+			genderpanel.add(gendertext);
+			
+			
+			
+			userpanel.add(heightpanel);
+			userpanel.add(weightpanel);
+			userpanel.add(genderpanel);
+			
+			add(text,BorderLayout.NORTH);
+			add(userpanel,BorderLayout.CENTER);
+			
+		}
+	}
 }

@@ -7,8 +7,8 @@ public class GUI_Login extends JFrame implements ActionListener{
 	public static String NAME;
 	public static String PASSWORD;
 	
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 400;
+	public final int WIDTH = 500;
+	public final int HEIGHT = 400;
 	
 	private JTextField name;
 	private JPasswordField password;
@@ -41,9 +41,7 @@ public class GUI_Login extends JFrame implements ActionListener{
 		JLabel namelabel = new JLabel("Name        ");
 		JLabel pwlabel = new JLabel("PassWord");
 		name = new JTextField(10);
-		//add
 		password = new JPasswordField(10);
-		//add
 		JPanel ButtonPanel = new JPanel(new FlowLayout());
 		JButton loginButton = new JButton("Log-In");
 		loginButton.addActionListener(this);
@@ -71,7 +69,7 @@ public class GUI_Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		NAME = name.getText();
 		PASSWORD = password.getText();
-		
+		Login.loadFile(NAME,PASSWORD);
 	}
 	
 	public static void main(String[] args)
