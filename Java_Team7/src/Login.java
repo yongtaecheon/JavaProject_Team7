@@ -51,20 +51,21 @@ public class Login{
 		outputStream.println(u.getCalory());
 		outputStream.close();
 	}
-	
 	//이미 있으면 불러오고 없으면 새로운 텍스트 파일을 생성
 	public static void loadFile(String name, String password) {
+		Scanner keyboard = new Scanner(System.in);
 		User u = new User();
 		Scanner inputStream = null;
 		try {
 			inputStream = new Scanner(new FileInputStream(name+".txt"));
+			String scan_password = inputStream.next();
 			while(true) {
-				if((inputStream.next()).equals(password))
-				{
+				if(scan_password.equals(password)) {
 					break;
 				}
 				else {
 					System.out.println("잘못된 비밀번호 입니다. 다시 입력해 주세요.");
+					password = keyboard.next();
 				}
 			}
 			u.setHeight(inputStream.nextDouble());
@@ -82,6 +83,7 @@ public class Login{
 		catch(FileNotFoundException e){
 			System.out.println("새로운 사용자 이시군요! 계정을 새로 생성하겠습니다.");
 			createFile(name, password);
+			loadFile(name,password);
 		}
 	}
 	
