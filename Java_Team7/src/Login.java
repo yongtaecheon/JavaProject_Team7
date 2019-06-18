@@ -59,27 +59,23 @@ public class Login{
 		try {
 			inputStream = new Scanner(new FileInputStream(name+".txt"));
 			String scan_password = inputStream.next();
-			while(true) {
 				if(scan_password.equals(password)) {
-					break;
+					u.setHeight(inputStream.nextDouble());
+					u.setWeight(inputStream.nextDouble());
+					u.setGender(inputStream.next());
+					u.setBMI(inputStream.nextDouble());
+					while(inputStream.hasNextLine()) {
+						if(inputStream.hasNextDouble()) {
+							u.setCalory(inputStream.nextDouble());
+							break;
+						}
+						u.setFood(inputStream.next());
+					}
 				}
 				else {
-					System.out.println("잘못된 비밀번호 입니다. 다시 입력해 주세요.");
-					password = keyboard.next();
+						System.out.println("잘못된 비밀번호 입니다.");
 				}
 			}
-			u.setHeight(inputStream.nextDouble());
-			u.setWeight(inputStream.nextDouble());
-			u.setGender(inputStream.next());
-			u.setBMI(inputStream.nextDouble());
-			while(inputStream.hasNextLine()) {
-				if(inputStream.hasNextDouble()) {
-					u.setCalory(inputStream.nextDouble());
-					break;
-				}
-				u.setFood(inputStream.next());
-			}
-		}
 		catch(FileNotFoundException e){
 			System.out.println("새로운 사용자 이시군요! 계정을 새로 생성하겠습니다.");
 			createFile(name, password);
