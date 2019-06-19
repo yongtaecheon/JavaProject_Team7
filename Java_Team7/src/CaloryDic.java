@@ -34,7 +34,7 @@ public class CaloryDic extends JFrame implements ActionListener{
 		JPanel p2 = new JPanel(new FlowLayout());
 		JLabel L2 = new JLabel("음식이름 :");
 		 t1 = new JTextField(30);
-		ImageIcon I1 = new ImageIcon("C:\\Users\\user\\Desktop\\icon\\search.png");
+		ImageIcon I1 = new ImageIcon("search.png");
 		Image errorimg = I1.getImage();
 		Image changedimg = errorimg.getScaledInstance(20,20, Image.SCALE_SMOOTH);
 	    ImageIcon icon = new ImageIcon(changedimg);
@@ -90,22 +90,35 @@ public class CaloryDic extends JFrame implements ActionListener{
 	}
 	 public void actionPerformed(ActionEvent e)
 	    {
-		 
-		 I2 = new ImageIcon(t1.getText()+".jpeg");
+		 String foodname = t1.getText();
+		 I2 = new ImageIcon(foodname+".jpeg");
 		 Image errorimg = I2.getImage();
-		 Image changedimg = errorimg.getScaledInstance(200,200, Image.SCALE_SMOOTH);
+		 Image changedimg = errorimg.getScaledInstance(50,50, Image.SCALE_SMOOTH);
 		 icon2 = new ImageIcon(changedimg);
 		 b2.setIcon(icon2);
 		 b2.setVisible(true);
 		 table.setVisible(true); 
-		    
-		 contents[0][0] = "상추";
-		 contents[0][1] = "상추";
-		 contents[0][2] = "상추";
-		 contents[0][3] = "상추";
-		 contents[0][4] = "상추";
-		 contents[0][5] = "상추";
-		 contents[0][6] = "상추";
+		 
+		
+		 
+		 Food f = new Food();
+		 f.readFoodFile();
+		 
+		 for(int i = 0; i < f.getFoodsize();i++) // foodInfo 텍스트 파일에 저장된 개수를 불러오는 readFoodFile메서드
+		 {
+			if( foodname.equals(f.food[i].getName()))
+			{
+				contents[0][0] = f.food[i].getName();
+				contents[0][1] = f.food[i].getKcal()+"kcal";
+				contents[0][2] = f.food[i].getch()+"g";
+				contents[0][3] = f.food[i].getprotein()+"g";
+				contents[0][4] = f.food[i].getfat()+"g";
+				contents[0][5] = f.food[i].getsugar()+"g";
+				contents[0][6] = f.food[i].getna()+"mg";
+			}
+		 }
+		 
+		
 	    }
 	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
