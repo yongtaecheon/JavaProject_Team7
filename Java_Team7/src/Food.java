@@ -9,6 +9,7 @@ public class Food implements Serializable{
       private double fat;//지
       private double sugar;//당류
       private double na;//나트륨
+      private String imageName; //음식이미지파일이름
       Food[] food;
       
       public Food() {
@@ -21,6 +22,7 @@ public class Food implements Serializable{
           fat=0;
           sugar=0;
           na=0;
+          imageName=" ";
         
       }
       public String getName() {
@@ -59,6 +61,8 @@ public class Food implements Serializable{
             	   food[foodsize].sugar=inputStream.nextDouble();
                if(inputStream.hasNextDouble())
             	   food[foodsize].na=inputStream.nextDouble();
+               if(inputStream.hasNextLine())
+            	   food[foodsize].imageName=inputStream.nextLine();
                foodsize++;             
          }
           
