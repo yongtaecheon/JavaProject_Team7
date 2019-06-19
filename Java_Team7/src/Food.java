@@ -3,13 +3,12 @@ import java.io.*;
 
 public class Food implements Serializable{
       private String name;
-      private double kcal;
-      private double ch; //탄
-      private double protein;//단
-      private double fat;//지
-      private double sugar;//당류
-      private double na;//나트륨
-      private String imageName; //음식이미지파일이름
+      double kcal;
+      double ch; //탄
+      double protein;//단
+      double fat;//지
+      double sugar;//당류
+      double na;//나트륨
       Food[] food;
       
       public Food() {
@@ -22,8 +21,6 @@ public class Food implements Serializable{
           fat=0;
           sugar=0;
           na=0;
-          imageName=" ";
-        
       }
       public String getName() {
     	  return name;
@@ -61,8 +58,6 @@ public class Food implements Serializable{
             	   food[foodsize].sugar=inputStream.nextDouble();
                if(inputStream.hasNextDouble())
             	   food[foodsize].na=inputStream.nextDouble();
-               if(inputStream.hasNext())
-            	   food[foodsize].imageName=inputStream.next();
                foodsize++;             
          }
           
