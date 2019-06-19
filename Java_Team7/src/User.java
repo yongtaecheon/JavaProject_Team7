@@ -95,34 +95,34 @@ public class User {
     	  System.out.printf("BMI지수가 %.2f 이므로 저체중입니다.", getBMI());
       }
    }
-   public String calculateCalory()
+   public String calculateCalory(String gender)
    {
       if(gender.equals("m")) {//남자
          if(calory > 2700)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("하루 권장 칼로리보다 많습니다");
          }
          else if(calory == 2700)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리입니다. ");
+            return ("하루 권장 칼로리입니다");
          }
          else 
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
+            return ("하루 권장 칼로리 보다 작습니다");
          }
       }
       else {//여자
          if(calory > 2000)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("하루 권장 칼로리보다 많습니다");
          }
          else if(calory == 2000)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리입니다. ");
+            return ("하루 권장 칼로리입니다");
          }
          else 
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
+            return ("하루 권장 칼로리 보다 작습니다");
          }
       }
    }

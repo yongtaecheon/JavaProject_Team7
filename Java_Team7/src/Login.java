@@ -107,6 +107,10 @@ public class Login{
 							u.setFood(inputStream.next());
 						}
 					}
+					
+					GUI_MainScreen m = new GUI_MainScreen();		
+					GUI_Login.mainwindow.dispose();
+					
 				}
 				else {
 					GUI_LoginFail f = new GUI_LoginFail();

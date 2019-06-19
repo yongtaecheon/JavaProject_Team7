@@ -59,6 +59,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		AddFoodPanel.setBackground(Color.RED);
 		add(AddFoodPanel);
 		
+		
 		// 식단 관리 Panel
 		ManagePanel.setBounds(150, 0, 700, 650);
 		ManagePanel.setBackground(Color.YELLOW);
@@ -67,7 +68,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		// 운동 Panel
 		ExercisePanel.setBounds(150, 0, 700, 650);
 		ExercisePanel.setBackground(Color.WHITE);
-		add(ExercisePanel);
+		add(ExercisePanel);	
 		
 		// 칼로리 사전 Panel
 		CalDictionPanel.setBounds(150, 0, 700, 650);
@@ -99,6 +100,8 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		
 	}
 
+	
+	
 	public void actionPerformed(ActionEvent e)
 	{
 		String ButtonString = e.getActionCommand();
