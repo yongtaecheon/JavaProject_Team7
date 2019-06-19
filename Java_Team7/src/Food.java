@@ -61,8 +61,8 @@ public class Food implements Serializable{
             	   food[foodsize].sugar=inputStream.nextDouble();
                if(inputStream.hasNextDouble())
             	   food[foodsize].na=inputStream.nextDouble();
-               if(inputStream.hasNextLine())
-            	   food[foodsize].imageName=inputStream.nextLine();
+               if(inputStream.hasNext())
+            	   food[foodsize].imageName=inputStream.next();
                foodsize++;             
          }
           
