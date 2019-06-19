@@ -6,6 +6,8 @@ public class GUI_Login extends JFrame implements ActionListener{
 
 	static GUI_Login mainwindow = new GUI_Login();
 	
+	public static User MainUser = new User();
+	
 	public static String NAME;
 	public static String PASSWORD;
 	
@@ -53,16 +55,17 @@ public class GUI_Login extends JFrame implements ActionListener{
 		add(panel1);
 	}
 	
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent e) 
+	{		
 		String buttonString = e.getActionCommand();
 		
 		if(buttonString.equals("·Î±×ÀÎ"))
 		{
 			NAME = namefield.getText();
 			PASSWORD = passwordfield.getText();
-			Login.loadFile(NAME,PASSWORD);
+			MainUser = Login.loadFile(NAME,PASSWORD);
 		}
+		
 		else
 		{
 			GUI_Regis g = new GUI_Regis();
@@ -74,8 +77,5 @@ public class GUI_Login extends JFrame implements ActionListener{
 	{	
 		mainwindow.setVisible(true);
 	}
-
-	
-
 	
 }

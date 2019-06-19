@@ -59,7 +59,7 @@ public class Login{
 		outputStream.close();
 	}
 	
-	public static void createFile(String name, String password, double height, double weight, String gender) {
+	public static User createFile(String name, String password, double height, double weight, String gender) {
 		PrintWriter outputStream  = null;
 		try {
 			outputStream = new PrintWriter(new FileOutputStream(name+".txt"));
@@ -78,8 +78,10 @@ public class Login{
 		outputStream.println("<몸무게>"); outputStream.println(u.getWeight());
 		outputStream.println("<성별>"); outputStream.println(u.getGender());
 		outputStream.println("<BMI지수>"); outputStream.println(u.getBMI());
-		outputStream.println("<음식>"); 
+		outputStream.println("<음식>"); 	
 		outputStream.close();
+		
+		return u;
 	}
 	//이미 있으면 불러오고 없으면 새로운 텍스트 파일을 생성
 	public static User loadFile(String name, String password) {

@@ -82,7 +82,7 @@ public class GUI_Regis extends JFrame implements ActionListener{
 		else
 			GENDER = "f";
 		
-		Login.createFile(NAME, PASSWORD, HEIGHT, WEIGHT, GENDER);
+		GUI_Login.MainUser = Login.createFile(NAME, PASSWORD, HEIGHT, WEIGHT, GENDER);
 		
 		GUI_Ok o = new GUI_Ok();// 회원 가입 완료 창
 		dispose();
@@ -111,7 +111,8 @@ public class GUI_Regis extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e)
 		{
 			dispose();
-			//다음 화면 추가해주기
+			GUI_MainScreen m = new GUI_MainScreen();
+			m.setVisible(true);
 		}
 	}
 	

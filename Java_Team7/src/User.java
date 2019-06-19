@@ -7,8 +7,6 @@ public class User {
    double calory;
    String[] food;
    int foodsize;//food배열의 크기
-   int check;
-   
    public User() {
       height = 0;
       weight = 0;
