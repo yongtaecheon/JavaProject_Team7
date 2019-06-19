@@ -11,7 +11,7 @@ public class GUI_LoginFail extends JFrame implements ActionListener{
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
-		ImageIcon error = new ImageIcon("C:\\Users\\USER\\Desktop\\Error.png");
+		ImageIcon error = new ImageIcon("Error.png");
 		Image errorimg = error.getImage();
 		Image changedimg = errorimg.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
 		ImageIcon icon = new ImageIcon(changedimg);

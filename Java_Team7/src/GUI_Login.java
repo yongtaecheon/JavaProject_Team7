@@ -23,7 +23,7 @@ public class GUI_Login extends JFrame implements ActionListener{
 		setSize(WIDTH,HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ImageIcon icon = new ImageIcon("C:\\Users\\USER\\Desktop\\Yoda.jpg");
+		ImageIcon icon = new ImageIcon("Yoda.jpg");
 	    
 		JPanel panel1 = new JPanel() {
 	    	public void paintComponent(Graphics g) {

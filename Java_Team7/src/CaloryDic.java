@@ -10,8 +10,9 @@ public class CaloryDic extends JFrame implements ActionListener{
 	JTextField t1 ;
 	ImageIcon I2;
 	JTable table;
-	boolean check=false;
+	boolean check = false;
 	JButton b2;
+	JScrollPane sc;
 	String header[]= {"이름","칼로리(kcal)","탄수화물","단백질","당류","나트륨"};
 	String contents[][] = {{"","","","","","",""}};	
 	
@@ -55,15 +56,10 @@ public class CaloryDic extends JFrame implements ActionListener{
 		JPanel p3 = new JPanel(new FlowLayout());
 		 //음식사진
 		
-		 I2 = new ImageIcon("");
-		 errorimg = I2.getImage();
-		 changedimg = errorimg.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-		 ImageIcon icon2 = new ImageIcon(changedimg);
-		    
-		 b2 = new JButton();
-		 b2.setVisible(false);
-		 
-		 //b2.setPreferredSize(new Dimension(70,70));
+		
+		b2 = new JButton();
+		b2.setVisible(false);
+		
 		b2.setBorderPainted(false);
 		b2.setFocusPainted(false);
 		b2.setContentAreaFilled(false);
@@ -71,13 +67,16 @@ public class CaloryDic extends JFrame implements ActionListener{
 		p3.setBackground(Color.white);
 		p3.add(b2);
 		
-		//setZero();
+		
 		JPanel p4 = new JPanel(new FlowLayout());
 		table = new JTable(contents,header);
 		table.setVisible(false);
 		
+		sc = new JScrollPane(table);
+		sc.setPreferredSize(new Dimension(400,100));
+		
 		p4.setBackground(Color.white);
-		p4.add(table);
+		p4.add(sc);
 		
 		Panel.add(p1);
 		Panel.add(p2);
@@ -89,22 +88,20 @@ public class CaloryDic extends JFrame implements ActionListener{
 		
 	}
 	 public void actionPerformed(ActionEvent e)
-	    {
+	 {
 		 String foodname = t1.getText();
 		 I2 = new ImageIcon(foodname+".jpeg");
 		 Image errorimg = I2.getImage();
-		 Image changedimg = errorimg.getScaledInstance(50,50, Image.SCALE_SMOOTH);
+		 Image changedimg = errorimg.getScaledInstance(100,100, Image.SCALE_SMOOTH);
 		 icon2 = new ImageIcon(changedimg);
 		 b2.setIcon(icon2);
 		 b2.setVisible(true);
 		 table.setVisible(true); 
 		 
-		
-		 
 		 Food f = new Food();
 		 f.readFoodFile();
 		 
-		 for(int i = 0; i < f.getFoodsize();i++) // foodInfo 텍스트 파일에 저장된 개수를 불러오는 readFoodFile메서드
+		 for(int i = 0; i < 50;i++) 
 		 {
 			if( foodname.equals(f.food[i].getName()))
 			{
@@ -115,19 +112,9 @@ public class CaloryDic extends JFrame implements ActionListener{
 				contents[0][4] = f.food[i].getfat()+"g";
 				contents[0][5] = f.food[i].getsugar()+"g";
 				contents[0][6] = f.food[i].getna()+"mg";
+				break;
 			}
 		 }
 		 
-		
-	    }
-	/*public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		CaloryDic g = new CaloryDic(); 
-	}*/
-	/* public void setZero() {    //Food객체배열 초기화
-         for(int i=0; i <7 ; i++){
-           contents[i] = new String();
-          }
-     }*/ 
-
+	 }
 }

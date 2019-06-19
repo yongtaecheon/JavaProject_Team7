@@ -10,6 +10,7 @@ public class Food implements Serializable{
       double sugar;//당류
       double na;//나트륨
       Food[] food;
+      int foodsize;
       
       public Food() {
           
@@ -29,6 +30,21 @@ public class Food implements Serializable{
       public double getKcal() {
     	  return kcal;
       }
+      public double getch() {
+    	  return ch;
+      }
+      public double getprotein() {
+    	  return protein;
+      }
+      public double getfat() {
+    	  return fat;
+      }
+      public double getsugar() {
+    	  return sugar;
+      }
+      public double getna() {
+    	  return na;
+      }
       public void setZero() {    //Food객체배열 초기화
           for(int i=0; i < 50 ; i++){
             food[i] = new Food();
@@ -44,7 +60,7 @@ public class Food implements Serializable{
               System.out.println("Cannot find datafile.");
          }
          setZero();
-         while(inputStream.hasNextLine()) {
+         while(inputStream.hasNext()) {
         	 if(inputStream.hasNext())
                  food[foodsize].name = inputStream.next();
              if(inputStream.hasNextInt())
@@ -61,6 +77,9 @@ public class Food implements Serializable{
             	   food[foodsize].na=inputStream.nextDouble();
                foodsize++;             
          }
+         
+         inputStream.close();
+       
           
       }
 }
