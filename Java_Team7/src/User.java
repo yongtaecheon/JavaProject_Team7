@@ -1,5 +1,6 @@
 
 public class User {
+   private String name;
    private double height;
    private double weight;
    private String gender;//m = male(남자), f = female(여자)
@@ -23,6 +24,16 @@ public class User {
       food = new String[50];
       foodsize = 0;
    }
+   
+   public void setName(String name)
+   {
+	   this.name = name;
+   }
+   
+   public String getName() {
+	   return name;
+   }
+   
    public String getGender_Korean()
    {
 	   if(gender.equals("m"))

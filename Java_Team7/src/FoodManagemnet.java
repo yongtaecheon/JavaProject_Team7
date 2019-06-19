@@ -33,7 +33,8 @@ public class FoodManagemnet {
 		//칼로리계산
 		for(int i = 0; i < u.foodsize; i++) {
 			for(int j = 0; j < 50; j++) {
-				if((u.food[i]).equals(f.food[j].getName())) {
+				if((u.food[i]).equals(f.food[j].getName()))
+				{
 					u.calory += f.food[j].getKcal();
 				}
 			}	
@@ -42,22 +43,18 @@ public class FoodManagemnet {
 		return u.calculateCalory();
 	}
 	
-	public static void addFood(String name) {//append모드로 기존의 파일을 열어서 음식을 추가
+	public static void addFood(String name, String food) {//append모드로 기존의 파일을 열어서 음식을 추가
 		PrintWriter outputStream = null;
 		try{
 			outputStream = new PrintWriter(new FileOutputStream(name+".txt", true));
 		}
 		catch(FileNotFoundException e) {
-			System.out.println("Error opening the File.");
+			
 		}
-		System.out.println("음식 이름 입력:");
-		while(true) {
-			String input = keyboard.next();
-			if(input.equals("끝")) {
-				break;
-			}
-			outputStream.println(input);
-		}
+		String input = food;
+		
+		outputStream.println(input);
+		
 		outputStream.close();
 	}
 }

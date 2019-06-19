@@ -21,6 +21,17 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	private JLabel myBMIlabel = new JLabel(GUI_Login.MainUser.getBMI()+"");
 	private JLabel myGenderlabel = new JLabel(GUI_Login.MainUser.getGender_Korean());
 	
+	private JTextField BField = new JTextField();
+	private JTextField LField = new JTextField();
+	private JTextField DField = new JTextField();
+	
+	
+	ImageIcon I1 = new ImageIcon("C:\\Users\\USER\\Desktop\\Plus.png");
+    Image errorimg = I1.getImage();
+    Image changedimg = errorimg.getScaledInstance(20,20, Image.SCALE_SMOOTH);
+    ImageIcon icon = new ImageIcon(changedimg);  
+   
+	
 	public GUI_MainScreen()
 	{
 		super("식단 관리 프로그램");
@@ -57,8 +68,59 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		// 음식 추가 Panel
 		AddFoodPanel.setBounds(150, 0, 700, 650);
 		AddFoodPanel.setBackground(Color.RED);
-		add(AddFoodPanel);
+		AddFoodPanel.setLayout(new BorderLayout());
 		
+		JPanel FoodinnerPanel = new JPanel();
+		//FoodinnerPanel.setSize(700,650);
+		FoodinnerPanel.setLayout(null);
+		
+		JLabel Breakfast = new JLabel("아침");
+		Breakfast.setBounds(100, 200, 40, 20);
+		FoodinnerPanel.add(Breakfast);
+		BField.setBounds(300, 200, 70, 20);
+		FoodinnerPanel.add(BField);
+		JButton P1Button = new JButton(); // 추가 아이콘
+		P1Button.setBounds(380, 200, 20, 20);
+		P1Button.setIcon(icon);
+		P1Button.setPreferredSize(new Dimension(45,28));
+		P1Button.setBorderPainted(false);
+		P1Button.setFocusPainted(false);
+		P1Button.setContentAreaFilled(false);
+		P1Button.addActionListener(new Plus1Action());//버튼 누르기
+		FoodinnerPanel.add(P1Button);
+		
+		JLabel Lunch = new JLabel("점심");
+		Lunch.setBounds(100, 300, 40, 20);
+		FoodinnerPanel.add(Lunch);
+		LField.setBounds(300, 300, 70, 20);
+		FoodinnerPanel.add(LField);
+		JButton P2Button = new JButton(); // 추가 아이콘
+		P2Button.setBounds(380, 300, 20, 20);
+		P2Button.setIcon(icon);
+		P2Button.setPreferredSize(new Dimension(45,28));
+		P2Button.setBorderPainted(false);
+		P2Button.setFocusPainted(false);
+		P2Button.setContentAreaFilled(false);
+		P2Button.addActionListener(new Plus2Action()); //버튼 누르기
+		FoodinnerPanel.add(P2Button);
+		
+		JLabel Dinner = new JLabel("저녁");
+		Dinner.setBounds(100, 400, 40, 20);
+		FoodinnerPanel.add(Dinner);
+		DField.setBounds(300, 400, 70, 20);
+		FoodinnerPanel.add(DField);
+		JButton P3Button = new JButton(); // 추가 아이콘
+		P3Button.setBounds(380, 400, 20, 20);
+		P3Button.setIcon(icon);
+		P3Button.setPreferredSize(new Dimension(45,28));
+		P3Button.setBorderPainted(false);
+		P3Button.setFocusPainted(false);
+		P3Button.setContentAreaFilled(false);
+		P3Button.addActionListener(new Plus3Action()); // 버튼 누르기
+		FoodinnerPanel.add(P3Button);
+		
+		AddFoodPanel.add(FoodinnerPanel);
+		add(AddFoodPanel);
 		
 		// 식단 관리 Panel
 		ManagePanel.setBounds(150, 0, 700, 650);
@@ -100,7 +162,36 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		
 	}
 
+	private class Plus1Action implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String food = BField.getText();
+			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			BField.setText("");
+		}
+	}
 	
+	private class Plus2Action implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String food = LField.getText();
+			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			LField.setText("");
+		}
+	}
+	
+	private class Plus3Action implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String food = DField.getText();
+			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			DField.setText("");
+		}
+	}
+
 	
 	public void actionPerformed(ActionEvent e)
 	{

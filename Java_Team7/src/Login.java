@@ -10,55 +10,6 @@ public class Login{
 	static User u = new User();
 	static Scanner keyboard = new Scanner(System.in);
 	
-	public static double getCal(String name) {//name.txt파일의 음식을 읽고 칼로리르 계산하여 출력
-		Food f = new Food();
-		f.readFoodFile();
-		Scanner inputStream = null;
-		try {
-			inputStream = new Scanner(new FileInputStream(name+".txt"));
-		}
-		catch(FileNotFoundException e) {
-			System.out.println("Error opening the File.");
-		}
-		while(inputStream.hasNextLine()) {
-			if(inputStream.next().equals("<음식>")){
-				break;
-			}
-		}
-		while(inputStream.hasNext()) {
-			u.setFood(inputStream.next());
-		}
-		//칼로리계산
-		for(int i = 0; i < u.foodsize; i++) {
-			for(int j = 0; j < 50; j++) {
-				if((u.food[i]).equals(f.food[j].getName())) {
-					u.calory+= f.food[j].getKcal();
-				}
-			}
-		}
-		inputStream.close();
-		return u.calory;
-	}
-	
-	public static void addFood(String name) {//append모드로 기존의 파일을 열어서 음식을 추가
-		PrintWriter outputStream = null;
-		try{
-			outputStream = new PrintWriter(new FileOutputStream(name+".txt", true));
-		}
-		catch(FileNotFoundException e) {
-			System.out.println("Error opening the File.");
-		}
-		System.out.println("음식 이름 입력:");
-		while(true) {
-			String input = keyboard.next();
-			if(input.equals("끝")) {
-				break;
-			}
-			outputStream.println(input);
-		}
-		outputStream.close();
-	}
-	
 	public static User createFile(String name, String password, double height, double weight, String gender) {
 		PrintWriter outputStream  = null;
 		try {
@@ -70,6 +21,7 @@ public class Login{
 		outputStream.println(password);
 		//System.out.println("키(m) 몸무게(kg) 성별(m/f) 입력:");
 		//keyboard부분을 gettext로 바꾸어 입력.
+		u.setName(name);
 		u.setHeight(height);
 		u.setWeight(weight);
 		u.setGender(gender); 
@@ -88,6 +40,7 @@ public class Login{
 		Scanner inputStream = null;
 		try {
 			inputStream = new Scanner(new FileInputStream(name+".txt"));
+			u.setName(name);
 			String scan_password = inputStream.next();
 				if(scan_password.equals(password)) {
 					if(inputStream.next().equals("<키>")) {

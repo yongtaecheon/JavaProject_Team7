@@ -2,13 +2,13 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Food implements Serializable{
-      private String name;
-      private double kcal;
-      private double ch; //Åº
-      private double protein;//´Ü
-      private double fat;//Áö
-      private double sugar;//´ç·ù
-      private double na;//³ªÆ®·ý
+      String name;
+      double kcal;
+      double ch; //Åº
+      double protein;//´Ü
+      double fat;//Áö
+      double sugar;//´ç·ù
+      double na;//³ªÆ®·ý
       Food[] food;
       
       public Food() {
