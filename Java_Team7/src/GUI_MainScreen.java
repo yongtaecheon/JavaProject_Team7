@@ -21,6 +21,9 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	private JLabel myBMIlabel = new JLabel(GUI_Login.MainUser.getBMI()+"");
 	private JLabel myGenderlabel = new JLabel(GUI_Login.MainUser.getGender_Korean());
 	
+	//private JLabel manage = new JLabel(/*FoodManagemnet.showCal(GUI_Login.MainUser)*/); // 식단 관리
+	private JLabel BMImanage = new JLabel(GUI_Login.MainUser.calculateBMI());
+	   
 	private JTextField BField = new JTextField();
 	private JTextField LField = new JTextField();
 	private JTextField DField = new JTextField();
@@ -29,8 +32,9 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	ImageIcon I1 = new ImageIcon("C:\\Users\\USER\\Desktop\\Plus.png");
     Image errorimg = I1.getImage();
     Image changedimg = errorimg.getScaledInstance(20,20, Image.SCALE_SMOOTH);
-    ImageIcon icon = new ImageIcon(changedimg);  
-   
+    ImageIcon icon = new ImageIcon(changedimg); 
+    
+    
 	
 	public GUI_MainScreen()
 	{
@@ -126,6 +130,19 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		ManagePanel.setBounds(150, 0, 700, 650);
 		ManagePanel.setBackground(Color.YELLOW);
 		add(ManagePanel);
+	      BMImanage.setBounds(320,200,600,200);
+	      
+	      JLabel Manage = new JLabel("오늘 하루의 평가 :");
+	      JLabel Bmi = new JLabel("현재 몸상태    : ");
+	      Bmi.setBounds(200,250,100,100);
+	      Manage.setBounds(200,150,150,100);
+	    //  manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+	    //  add(manage);
+	      add(Manage);//오늘 하루 섭취한 calory,권장칼로리
+	      add(BMImanage);
+	      add(Bmi);// 자신의 BMI와 몸상태 판단
+	      add(ManagePanel);
+	     
 		
 		// 운동 Panel
 		ExercisePanel.setBounds(150, 0, 700, 650);
@@ -158,6 +175,8 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	    add(Genderlabel);
 	    add(myGenderlabel);
 	    
+	    
+	    GUI_Login.mainwindow.dispose();
 		setVisible(true);
 		
 	}
@@ -168,6 +187,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		{
 			String food = BField.getText();
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			GUI_Login.MainUser.setFood(food);
 			BField.setText("");
 		}
 	}
@@ -178,6 +198,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		{
 			String food = LField.getText();
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			GUI_Login.MainUser.setFood(food);
 			LField.setText("");
 		}
 	}
@@ -188,6 +209,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		{
 			String food = DField.getText();
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
+			GUI_Login.MainUser.setFood(food);
 			DField.setText("");
 		}
 	}

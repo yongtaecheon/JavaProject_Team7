@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class GUI_Login extends JFrame implements ActionListener{
 
-	static GUI_Login mainwindow = new GUI_Login();
+	public static GUI_Login mainwindow = new GUI_Login();
 	
 	public static User MainUser = new User();
 	
@@ -69,7 +69,7 @@ public class GUI_Login extends JFrame implements ActionListener{
 		{
 			NAME = namefield.getText();
 			PASSWORD = passwordfield.getText();
-			MainUser = Login.loadFile(NAME,PASSWORD);			
+			Login.loadFile(NAME,PASSWORD);				
 		}
 		
 		else

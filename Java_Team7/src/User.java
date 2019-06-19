@@ -83,57 +83,59 @@ public class User {
    public String getFood() {
 	   return food[foodsize-1];
    }
-   public void calculateBMI()
+   
+   public String calculateBMI() //변경
    {
       if(20<=BMI && BMI<25 )
       {
-         System.out.printf("BMI지수가 %.2f 이므로 정상입니다.", getBMI());
+         return ("BMI지수가 "+getBMI()+" 이므로 정상입니다." );
       }
       else if(25<=BMI && BMI<30)
       {
-    	  System.out.printf("BMI지수가 %.2f 이므로 과체중입니다.", getBMI());
+         return ("BMI지수가 "+ getBMI()+" 이므로 과체중입니다." );
       }
       else if(30<=BMI && BMI<40)
       {
-    	  System.out.printf("BMI지수가 %.2f 이므로 비만입니다.", getBMI());
+       return ("BMI지수가 "+getBMI()+" 이므로 비만입니다.");
       }
       else if( BMI> 40)
       {
-    	  System.out.printf("BMI지수가 %.2f 이므로 고도비만입니다.", getBMI());
+         return ("BMI지수가"+ getBMI()+" 이므로 고도비만입니다.");
       }
       else
       {
-    	  System.out.printf("BMI지수가 %.2f 이므로 저체중입니다.", getBMI());
+        return("BMI지수가 "+getBMI()+" 이므로 저체중입니다.");
       }
    }
+   
    public String calculateCalory()
    {
       if(gender.equals("m")) {//남자
-         if(calory > 2700)
+         if(getCalory() > 2700)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리보다 많습니다");
          }
-         else if(calory == 2700)
+         else if(getCalory() == 2700)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리입니다. ");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리입니다. ");
          }
          else 
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
          }
       }
       else {//여자
-         if(calory > 2000)
+         if(getCalory() > 2000)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리보다 많습니다");
          }
-         else if(calory == 2000)
+         else if(getCalory() == 2000)
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리입니다. ");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리입니다. ");
          }
          else 
          {
-            return ("오늘 드신 음식의 총 칼로리는 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
+            return ("오늘 드신 음식의 총 칼로리는 "+getCalory()+"kcal이고,\n하루 권장 칼로리보다 적습니다.");
          }
       }
    }

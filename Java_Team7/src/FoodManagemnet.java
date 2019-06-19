@@ -31,6 +31,7 @@ public class FoodManagemnet {
 	public static String showCal(User u) {//loadfile 메소드로 부터 user를 return받아 총칼로리양을 계산하고 권장량인지 아닌지를 출력
 		f.readFoodFile();
 		//칼로리계산
+		
 		for(int i = 0; i < u.foodsize; i++) {
 			for(int j = 0; j < 50; j++) {
 				if((u.food[i]).equals(f.food[j].getName()))
@@ -41,6 +42,7 @@ public class FoodManagemnet {
 		}
 		
 		return u.calculateCalory();
+		
 	}
 	
 	public static void addFood(String name, String food) {//append모드로 기존의 파일을 열어서 음식을 추가

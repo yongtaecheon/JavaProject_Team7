@@ -36,7 +36,7 @@ public class Login{
 		return u;
 	}
 	//이미 있으면 불러오고 없으면 새로운 텍스트 파일을 생성
-	public static User loadFile(String name, String password) {
+	public static void loadFile(String name, String password) {
 		Scanner inputStream = null;
 		try {
 			inputStream = new Scanner(new FileInputStream(name+".txt"));
@@ -52,28 +52,31 @@ public class Login{
 					if(inputStream.next().equals("<성별>")) {
 						u.setGender(inputStream.next());
 					}
-					if(inputStream.next().equals("<BMI>")) {
+					if(inputStream.next().equals("<BMI지수>")) {
 						u.setBMI(inputStream.nextDouble());
 					}
 					if(inputStream.next().equals("<음식>")) {
-						while(inputStream.hasNextLine()) {
+						while(inputStream.hasNext()) {
 							u.setFood(inputStream.next());
 						}
 					}
+
+					GUI_Login.MainUser = u;
+					GUI_MainScreen m = new GUI_MainScreen();
 					
-					GUI_MainScreen m = new GUI_MainScreen();		
-					GUI_Login.mainwindow.dispose();
-					
-				}
-				else {
+				}	
+				else // 비밀번호 틀렸을 때
+				{
 					GUI_LoginFail f = new GUI_LoginFail();
 				}
+				
 			inputStream.close();
 		}
-		catch(FileNotFoundException e){
-		
+		catch(FileNotFoundException e)
+		{
+			GUI_LoginFail f = new GUI_LoginFail();
 		}
-		return u;
+		
 	}
 
 	
