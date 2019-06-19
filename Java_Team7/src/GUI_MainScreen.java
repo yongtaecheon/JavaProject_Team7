@@ -11,6 +11,16 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	private JPanel ExercisePanel = new JPanel();
 	private JPanel CalDictionPanel = new JPanel(); 
 	
+	private JLabel Heightlabel = new JLabel("키");
+	private JLabel Weightlabel = new JLabel("몸무게");
+	private JLabel BMIlabel = new JLabel("BMI");
+	private JLabel Genderlabel = new JLabel("성별 ");
+	
+	private JLabel myHeightlabel = new JLabel(GUI_Login.MainUser.getHeight()+"Cm");
+	private JLabel myWeightlabel = new JLabel(GUI_Login.MainUser.getWeight()+"Kg");
+	private JLabel myBMIlabel = new JLabel(GUI_Login.MainUser.getBMI()+"");
+	private JLabel myGenderlabel = new JLabel(GUI_Login.MainUser.getGender_Korean());
+	
 	public GUI_MainScreen()
 	{
 		super("식단 관리 프로그램");
@@ -64,37 +74,29 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		CalDictionPanel.setBackground(Color.GREEN);
 		add(CalDictionPanel);
 	
-		JPanel InfoPanel = new JPanel(); // 내 정보 패널
-		InfoPanel.setBounds(850, 0, 350, 650);
-		InfoPanel.setLayout(null);
+		// 내 정보 패널
+		Heightlabel.setBounds(900, 250, 70, 20);
+		myHeightlabel.setBounds(1050, 250, 70, 20);
+		add(Heightlabel);
+		add(myHeightlabel);
 		
-		
-		JLabel Heightlabel = new JLabel("키");
-		Heightlabel.setBounds(900, 380, 20, 20);
-		InfoPanel.add(Heightlabel);
+	    Weightlabel.setBounds(900, 300, 70, 20);
+	    myWeightlabel.setBounds(1050, 300, 70, 20);
+	    add(Weightlabel);
+	    add(myWeightlabel);
 	    
-		JLabel Weightlabel = new JLabel("몸무게");
-	    Weightlabel.setBounds(900, 410, 20, 20);
-	    InfoPanel.add(Weightlabel);
+	  	BMIlabel.setBounds(900, 350, 70, 20);
+	    myBMIlabel.setBounds(1050, 350, 70, 20);
+	    add(BMIlabel); 
+	    add(myBMIlabel);
 	    
-	    JLabel BMIlabel = new JLabel("BMI");
-	    BMIlabel.setBounds(900, 430, 20, 20);
-	    InfoPanel.add(BMIlabel);
+	    Genderlabel.setBounds(900, 400, 70, 20);
+	    myGenderlabel.setBounds(1050, 400, 70, 20);
+	    add(Genderlabel);
+	    add(myGenderlabel);
 	    
-	    JLabel Genderlabel = new JLabel("성별 ");
-	    Genderlabel.setBounds(900, 460, 20, 20);
-	    InfoPanel.add(Genderlabel);
-	    
+		setVisible(true);
 		
-	    add(InfoPanel);
-		
-		
-	}
-	
-	public static void main(String[] args)
-	{
-		GUI_MainScreen m = new GUI_MainScreen();
-		m.setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e)

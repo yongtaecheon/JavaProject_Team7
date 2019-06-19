@@ -7,8 +7,6 @@ public class User {
    double calory;
    String[] food;
    int foodsize;//food배열의 크기
-   int check;
-   
    public User() {
       height = 0;
       weight = 0;
@@ -25,9 +23,18 @@ public class User {
       food = new String[50];
       foodsize = 0;
    }
+   public String getGender_Korean()
+   {
+	   if(gender.equals("m"))
+		   return "남자";
+	   else
+		   return "여자";
+   }
+   
    public String getGender(){
       return gender;
    }
+   
    public void setGender(String gender) {
       this.gender=gender;
    }
@@ -57,7 +64,7 @@ public class User {
 	   this.BMI = BMI;
    }
    public void setBMI(double height,double weight){
-      this.BMI=weight/(height*height);
+      this.BMI = weight/(height*height)*10000;
    }
    public void setFood(String foodName) {
 	   food[foodsize++]=foodName;
@@ -88,33 +95,34 @@ public class User {
     	  System.out.printf("BMI지수가 %.2f 이므로 저체중입니다.", getBMI());
       }
    }
-   public String calculateCalory()
+   public String calculateCalory(String gender)
    {
       if(gender.equals("m")) {//남자
          if(calory > 2700)
          {
-            return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("하루 권장 칼로리보다 많습니다");
          }
          else if(calory == 2700)
          {
-            return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리입니다.");
+            return ("하루 권장 칼로리입니다");
          }
          else 
          {
-            return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다");         }
-      	 }
+            return ("하루 권장 칼로리 보다 작습니다");
+         }
+      }
       else {//여자
          if(calory > 2000)
          {
-        	 return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리보다 많습니다");
+            return ("하루 권장 칼로리보다 많습니다");
          }
          else if(calory == 2000)
          {
-        	 return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리입니다.");
+            return ("하루 권장 칼로리입니다");
          }
          else 
          {
-        	 return ("오늘 하루 섭취하신 음식의 총 칼로리량은 "+calory+"kcal이고,\n하루 권장 칼로리보다 적습니다");  
+            return ("하루 권장 칼로리 보다 작습니다");
          }
       }
    }

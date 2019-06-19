@@ -64,6 +64,10 @@ public class GUI_Login extends JFrame implements ActionListener{
 			NAME = namefield.getText();
 			PASSWORD = passwordfield.getText();
 			MainUser = Login.loadFile(NAME,PASSWORD);
+			
+			GUI_MainScreen m = new GUI_MainScreen();
+			
+			dispose();
 		}
 		
 		else
