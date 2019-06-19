@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class GUI_Sports extends JFrame implements ActionListener{
 	Sports spo = new Sports();
-	JPanel SportsPanel = new JPanel();
+	public static JPanel SportsPanel = new JPanel();
 	JTextField text_time;
 	JTextField text_sportsName;
 	JTextField text_sportsName2;
@@ -12,10 +12,9 @@ public class GUI_Sports extends JFrame implements ActionListener{
 	JTextField text_minmax;
 	
 	public GUI_Sports() {
-		super("운동");
+		/*super("운동");
 		setSize(850,300);
-		setLayout(new FlowLayout());
-		
+		setLayout(new FlowLayout());*/
 		SportsPanel.setLayout(new GridLayout(4,1));
 		
 		JPanel panel1 = new JPanel();
@@ -65,8 +64,8 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		}
 	}
 	
-	public static void main(String args[]) {
+/*	public static void main(String args[]) {
 		GUI_Sports gui = new GUI_Sports();
 		gui.setVisible(true);
-	}
+	}*/
 }

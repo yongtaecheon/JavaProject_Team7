@@ -6,7 +6,7 @@ import javax.swing.event.*;
 import javax.swing.ImageIcon;
 
 public class CaloryDic extends JFrame implements ActionListener{
-	JPanel Panel = new JPanel();
+	public static JPanel Panel = new JPanel();
 	JTextField t1 ;
 	ImageIcon I2;
 	JTable table;
@@ -18,11 +18,11 @@ public class CaloryDic extends JFrame implements ActionListener{
 	
 	ImageIcon icon2;
 	
-	loginGui(){
-		setTitle("칼로리사전");
+	public CaloryDic(){
+		/*setTitle("칼로리사전");
 		setSize(800,800);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 		
 		Panel.setLayout(new GridLayout(4,1));
 		
@@ -107,10 +107,10 @@ public class CaloryDic extends JFrame implements ActionListener{
 		 contents[0][5] = "상추";
 		 contents[0][6] = "상추";
 	    }
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CaloryDic g = new CaloryDic(); 
-	}
+	}*/
 	/* public void setZero() {    //Food객체배열 초기화
          for(int i=0; i <7 ; i++){
            contents[i] = new String();

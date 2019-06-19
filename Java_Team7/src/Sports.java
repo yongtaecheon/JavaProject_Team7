@@ -39,7 +39,7 @@ public class Sports {
 	
 	public String minmaxSports() {
 		double max = time[0];
-		String maxsports = "null";
+		String maxsports = "°È±â";
 		
 		for(int i=1;i<10;i++) {
 			if(time[i]>max) {

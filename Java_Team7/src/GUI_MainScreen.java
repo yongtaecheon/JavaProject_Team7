@@ -73,9 +73,9 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		AddFoodPanel.setBounds(150, 0, 700, 650);
 		AddFoodPanel.setBackground(Color.RED);
 		AddFoodPanel.setLayout(new BorderLayout());
+		AddFoodPanel.setVisible(false);
 		
 		JPanel FoodinnerPanel = new JPanel();
-		//FoodinnerPanel.setSize(700,650);
 		FoodinnerPanel.setLayout(null);
 		
 		JLabel Breakfast = new JLabel("아침");
@@ -129,29 +129,36 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		// 식단 관리 Panel
 		ManagePanel.setBounds(150, 0, 700, 650);
 		ManagePanel.setBackground(Color.YELLOW);
+		ManagePanel.setVisible(false);
 		add(ManagePanel);
 	      BMImanage.setBounds(320,200,600,200);
 	      
-	      JLabel Manage = new JLabel("오늘 하루의 평가 :");
+	      /*JLabel Manage = new JLabel("오늘 하루의 평가 :");
 	      JLabel Bmi = new JLabel("현재 몸상태    : ");
 	      Bmi.setBounds(200,250,100,100);
 	      Manage.setBounds(200,150,150,100);
-	    //  manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
-	    //  add(manage);
+	    //manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+	    //add(manage);
 	      add(Manage);//오늘 하루 섭취한 calory,권장칼로리
 	      add(BMImanage);
 	      add(Bmi);// 자신의 BMI와 몸상태 판단
-	      add(ManagePanel);
+	      add(ManagePanel);*/
 	     
 		
 		// 운동 Panel
 		ExercisePanel.setBounds(150, 0, 700, 650);
-		ExercisePanel.setBackground(Color.WHITE);
+		//ExercisePanel.setBackground(Color.WHITE);
+		ExercisePanel.setVisible(false);
+		GUI_Sports s = new GUI_Sports();
+		ExercisePanel.add(GUI_Sports.SportsPanel);
 		add(ExercisePanel);	
 		
 		// 칼로리 사전 Panel
 		CalDictionPanel.setBounds(150, 0, 700, 650);
 		CalDictionPanel.setBackground(Color.GREEN);
+		CalDictionPanel.setVisible(false);
+		CaloryDic c = new CaloryDic();
+		CalDictionPanel.add(CaloryDic.Panel);
 		add(CalDictionPanel);
 	
 		// 내 정보 패널
@@ -249,7 +256,6 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			ManagePanel.setVisible(false);
 			ExercisePanel.setVisible(false);
 			CalDictionPanel.setVisible(true);
-		}
-		
+		}		
 	}
 }
