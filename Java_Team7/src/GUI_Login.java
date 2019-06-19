@@ -22,24 +22,30 @@ public class GUI_Login extends JFrame implements ActionListener{
 		super("식단 관리 프로그램");
 		setSize(WIDTH,HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
 		
-	//	getContentPane().setBackground(Color.white);
-	//	ImageIcon icon = new ImageIcon("C:\\Users\\USER\\Desktop\\mic.jpg");
-				
-		JPanel panel1 = new JPanel();    
+		ImageIcon icon = new ImageIcon("C:\\Users\\USER\\Desktop\\Yoda.jpg");
+	    
+		JPanel panel1 = new JPanel() {
+	    	public void paintComponent(Graphics g) {
+	    		Dimension d = getSize();
+	    		g.drawImage(icon.getImage(), 0, 0, d.width, d.height, null);	
+	    		setOpaque(false);
+	    		super.paintComponent(g);
+	    	}	
+	    };	      
+	    
 		panel1.setLayout(null);
 		
 		JLabel namelabel = new JLabel("Name");
-		namelabel.setBounds(130, 150, 50, 20);
+		namelabel.setBounds(130, 170, 50, 20);
 		panel1.add(namelabel);
-		namefield.setBounds(220, 150, 120, 20);
+		namefield.setBounds(220, 170, 120, 20);
 		panel1.add(namefield);
 		
 		JLabel pwlabel = new JLabel("PassWord");
-		pwlabel.setBounds(130, 180, 70, 20);
+		pwlabel.setBounds(130, 200, 70, 20);
 		panel1.add(pwlabel);
-		passwordfield.setBounds(220, 180, 120, 20);
+		passwordfield.setBounds(220, 200, 120, 20);
 		panel1.add(passwordfield);
 		
 		JButton loginButton = new JButton("로그인");
@@ -48,7 +54,7 @@ public class GUI_Login extends JFrame implements ActionListener{
 		panel1.add(loginButton);
 		
 		JButton newButton = new JButton("회원가입");
-		newButton.setBounds(260, 250, 90, 30);
+		newButton.setBounds(250, 250, 90, 30);
 		newButton.addActionListener(this);
 		panel1.add(newButton);
 	
