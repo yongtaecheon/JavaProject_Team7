@@ -4,80 +4,75 @@ import java.awt.event.*;
 
 public class GUI_Login extends JFrame implements ActionListener{
 
+	static GUI_Login mainwindow = new GUI_Login();
+	
 	public static String NAME;
 	public static String PASSWORD;
 	
 	public final int WIDTH = 500;
 	public final int HEIGHT = 400;
 	
-	private JTextField name;
-	private JPasswordField password;
+	private JTextField namefield = new JTextField();
+	private JPasswordField passwordfield = new JPasswordField();
+	
 	public GUI_Login()
 	{
 		super("식단 관리 프로그램");
 		setSize(WIDTH,HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new GridLayout(3,1));
-		getContentPane().setBackground(Color.white);
+	
 		
-		ImageIcon icon = new ImageIcon("C:\\Users\\USER\\Desktop\\mic.jpg");
+	//	getContentPane().setBackground(Color.white);
+	//	ImageIcon icon = new ImageIcon("C:\\Users\\USER\\Desktop\\mic.jpg");
 				
 		JPanel panel1 = new JPanel();    
-		panel1.setLayout(new BorderLayout());
-		JLabel label1 = new JLabel();
-		label1.setIcon(icon);
-		panel1.add(label1);
-		panel1.setBackground(Color.white);
+		panel1.setLayout(null);
 		
-		JPanel logpanel = new JPanel();
-		logpanel.setLayout(new GridLayout(2,1));
+		JLabel namelabel = new JLabel("Name");
+		namelabel.setBounds(130, 150, 50, 20);
+		panel1.add(namelabel);
+		namefield.setBounds(220, 150, 120, 20);
+		panel1.add(namefield);
 		
-		JPanel namepanel = new JPanel();
-		namepanel.setLayout(new FlowLayout());
-		
-		JPanel pwpanel = new JPanel();
-		pwpanel.setLayout(new FlowLayout());
-		
-		JLabel namelabel = new JLabel("Name        ");
 		JLabel pwlabel = new JLabel("PassWord");
-		name = new JTextField(10);
-		password = new JPasswordField(10);
-		JPanel ButtonPanel = new JPanel(new FlowLayout());
-		JButton loginButton = new JButton("Log-In");
+		pwlabel.setBounds(130, 180, 70, 20);
+		panel1.add(pwlabel);
+		passwordfield.setBounds(220, 180, 120, 20);
+		panel1.add(passwordfield);
+		
+		JButton loginButton = new JButton("로그인");
+		loginButton.setBounds(130, 250, 90, 30);
 		loginButton.addActionListener(this);
+		panel1.add(loginButton);
 		
-		ButtonPanel.setBackground(Color.white);
-		ButtonPanel.add(loginButton);
-		
-		namepanel.add(namelabel);
-		namepanel.add(name);
-		
-		pwpanel.add(pwlabel);
-		pwpanel.add(password);
-		
-		logpanel.add(namepanel);
-		logpanel.add(pwpanel);
-		
-		namepanel.setBackground(Color.white);
-		pwpanel.setBackground(Color.white);
-		
-		add(panel1);		
-		add(logpanel);
-		add(ButtonPanel);
+		JButton newButton = new JButton("회원가입");
+		newButton.setBounds(260, 250, 90, 30);
+		newButton.addActionListener(this);
+		panel1.add(newButton);
+	
+		add(panel1);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		NAME = name.getText();
-		PASSWORD = password.getText();
-		Login.loadFile(NAME,PASSWORD);
+		
+		String buttonString = e.getActionCommand();
+		
+		if(buttonString.equals("로그인"))
+		{
+			NAME = namefield.getText();
+			PASSWORD = passwordfield.getText();
+			Login.loadFile(NAME,PASSWORD);
+		}
+		else
+		{
+			GUI_Regis g = new GUI_Regis();
+		}
+	
 	}
 	
 	public static void main(String[] args)
-	{
-		GUI_Login g = new GUI_Login();
-		g.setVisible(true);
-		
-		
+	{	
+		mainwindow.setVisible(true);
 	}
 
 	

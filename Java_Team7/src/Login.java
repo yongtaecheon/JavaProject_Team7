@@ -1,29 +1,15 @@
 import java.util.Scanner;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 
 public class Login{
+	
 	static User u = new User();
 	static Scanner keyboard = new Scanner(System.in);
 	
-	public static void main(String args[]) {
-		System.out.print("Enter Username: ");
-		String name = keyboard.next();
-		System.out.print("Enter Password: ");
-		String password = keyboard.next();
-		loadFile(name, password);
-		addFood(name);
-		System.out.println(getCal(name));
-	}
 	public static double getCal(String name) {//name.txt파일의 음식을 읽고 칼로리르 계산하여 출력
 		Food f = new Food();
 		f.readFoodFile();
@@ -73,7 +59,7 @@ public class Login{
 		outputStream.close();
 	}
 	
-	public static void createFile(String name, String password) {
+	public static void createFile(String name, String password, double height, double weight, String gender) {
 		PrintWriter outputStream  = null;
 		try {
 			outputStream = new PrintWriter(new FileOutputStream(name+".txt"));
@@ -84,9 +70,9 @@ public class Login{
 		outputStream.println(password);
 		//System.out.println("키(m) 몸무게(kg) 성별(m/f) 입력:");
 		//keyboard부분을 gettext로 바꾸어 입력.
-		u.setHeight(keyboard.nextDouble());
-		u.setWeight(keyboard.nextDouble());
-		u.setGender(keyboard.next()); 
+		u.setHeight(height);
+		u.setWeight(weight);
+		u.setGender(gender); 
 		u.setBMI(u.getHeight(), u.getWeight());
 		outputStream.println("<키>"); outputStream.println(u.getHeight());
 		outputStream.println("<몸무게>"); outputStream.println(u.getWeight());
@@ -121,71 +107,15 @@ public class Login{
 					}
 				}
 				else {
-						FailPW f=new FailPW();
-						f.setVisible(true);
+					GUI_LoginFail f = new GUI_LoginFail();
 				}
 			inputStream.close();
 		}
 		catch(FileNotFoundException e){
-			AddFile a = new AddFile();
-			a.setVisible(true);
-			//createFile(name, password);
+		
 		}
 		return u;
 	}
+
 	
-	public static class FailPW extends JFrame{
-		public FailPW()
-		{
-			setSize(250,150);
-			setLayout(new BorderLayout());
-			getContentPane().setBackground(Color.RED);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			JLabel text = new JLabel("             잘못된 비밀번호 입니다!");
-			add(text,BorderLayout.CENTER);
-		}
-	}
-
-	public static class AddFile extends JFrame{
-		public AddFile()
-		{
-			setSize(300,500);
-			setLayout(new BorderLayout());
-			getContentPane().setBackground(Color.WHITE);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-			JLabel text = new JLabel("새로운 사용자이군요! 계정을 생성하겠습니다.");
-			
-			JPanel userpanel = new JPanel(new GridLayout(3,1));
-			
-			JPanel heightpanel = new JPanel(new FlowLayout());
-			JLabel heightlabel = new JLabel("키");
-			JTextField heighttext = new JTextField(10);
-			
-			JPanel weightpanel = new JPanel(new FlowLayout());
-			JLabel weightlabel = new JLabel("몸무게");
-			JTextField weighttext = new JTextField(10);
-
-			JPanel genderpanel = new JPanel(new FlowLayout());
-			JLabel genderlabel = new JLabel("성별(남:m / 여:f)");
-			JTextField gendertext = new JTextField(10);			
-			
-			heightpanel.add(heightlabel);
-			heightpanel.add(heighttext);
-			weightpanel.add(weightlabel);
-			weightpanel.add(weighttext);	
-			genderpanel.add(genderlabel);
-			genderpanel.add(gendertext);
-			
-			
-			
-			userpanel.add(heightpanel);
-			userpanel.add(weightpanel);
-			userpanel.add(genderpanel);
-			
-			add(text,BorderLayout.NORTH);
-			add(userpanel,BorderLayout.CENTER);
-			
-		}
-	}
 }
