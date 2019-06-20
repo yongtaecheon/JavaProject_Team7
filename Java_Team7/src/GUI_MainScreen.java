@@ -37,7 +37,26 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
     ImageIcon icon = new ImageIcon(changedimg); 
     
     
-	
+    ImageIcon b1t1 = new ImageIcon("addfood.png");
+    Image b1img = b1t1.getImage();
+    Image changedimg1 = b1img.getScaledInstance(120,120, Image.SCALE_SMOOTH);
+    ImageIcon ButtonIcon1 = new ImageIcon(changedimg1); 
+    
+    ImageIcon b2t1 = new ImageIcon("management.png");
+    Image b2img = b2t1.getImage();
+    Image changedimg2 = b2img.getScaledInstance(120,120, Image.SCALE_SMOOTH);
+    ImageIcon ButtonIcon2 = new ImageIcon(changedimg2); 
+
+    ImageIcon b3t1 = new ImageIcon("Exercise.png");
+    Image b3img = b3t1.getImage();
+    Image changedimg3 = b3img.getScaledInstance(120,120, Image.SCALE_SMOOTH);
+    ImageIcon ButtonIcon3 = new ImageIcon(changedimg3); 
+    
+    ImageIcon b4t1 = new ImageIcon("fooddictionary.png");
+    Image b4img = b4t1.getImage();
+    Image changedimg4 = b4img.getScaledInstance(120,120, Image.SCALE_SMOOTH);
+    ImageIcon ButtonIcon4 = new ImageIcon(changedimg4); 
+    
 	public GUI_MainScreen()
 	{
 		super("식단 관리 프로그램");
@@ -60,28 +79,50 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		//
 		
 		JPanel ButtonPanel = new JPanel();
+		ButtonPanel.setBackground(Color.WHITE);
 		ButtonPanel.setLayout(null);
 		ButtonPanel.setBounds(0,0,150,650);
-		JButton AddFoodButton = new JButton("음식 추가");
-		JButton ManageButton = new JButton("식단 관리");
-		JButton ExerciseButton = new JButton("운동");
-		JButton CalDictionButton = new JButton("칼로리 사전");
+		JButton AddFoodButton = new JButton("1");
+		JButton ManageButton = new JButton("2");
+		JButton ExerciseButton = new JButton("3");
+		JButton CalDictionButton = new JButton("4");
 		
-		ButtonPanel.add(AddFoodButton);
-		AddFoodButton.setBounds(0,0,150,150);
+		
+		AddFoodButton.setBounds(0,0,150,150);		
+		AddFoodButton.setIcon(ButtonIcon1);
+		//AddFoodButton.setPreferredSize(new Dimension(45,28));
+		AddFoodButton.setBorderPainted(false);
+		AddFoodButton.setFocusPainted(false);
+		AddFoodButton.setContentAreaFilled(false);
 		AddFoodButton.addActionListener(this);
+		ButtonPanel.add(AddFoodButton);
 		
-		ButtonPanel.add(ManageButton);
 		ManageButton.setBounds(0,150,150,150);
+		ManageButton.setIcon(ButtonIcon2);
+		ManageButton.setPreferredSize(new Dimension(45,28));
+		ManageButton.setBorderPainted(false);
+		ManageButton.setFocusPainted(false);
+		ManageButton.setContentAreaFilled(false);
 		ManageButton.addActionListener(this);
+		ButtonPanel.add(ManageButton);
 		
-		ButtonPanel.add(ExerciseButton);
 		ExerciseButton.setBounds(0,300,150,150);
+		ExerciseButton.setIcon(ButtonIcon3);
+		ExerciseButton.setPreferredSize(new Dimension(45,28));
+		ExerciseButton.setBorderPainted(false);
+		ExerciseButton.setFocusPainted(false);
+		ExerciseButton.setContentAreaFilled(false);
 		ExerciseButton.addActionListener(this);
+		ButtonPanel.add(ExerciseButton);
 		
-		ButtonPanel.add(CalDictionButton);
 		CalDictionButton.setBounds(0,450,150,150);
+		CalDictionButton.setIcon(ButtonIcon4);
+		CalDictionButton.setPreferredSize(new Dimension(45,28));
+		CalDictionButton.setBorderPainted(false);
+		CalDictionButton.setFocusPainted(false);
+		CalDictionButton.setContentAreaFilled(false);
 		CalDictionButton.addActionListener(this);
+		ButtonPanel.add(CalDictionButton);
 		
 		add(ButtonPanel);
 		
@@ -101,7 +142,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		JButton P1Button = new JButton(); // 추가 아이콘
 		P1Button.setBounds(380, 200, 20, 20);
 		P1Button.setIcon(icon);
-		P1Button.setPreferredSize(new Dimension(45,28));
+		P1Button.setPreferredSize(new Dimension(150,150));
 		P1Button.setBorderPainted(false);
 		P1Button.setFocusPainted(false);
 		P1Button.setContentAreaFilled(false);
@@ -175,9 +216,10 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		// 운동 Panel
 		ExercisePanel.setBounds(150, 0, 700, 650);
 		ExercisePanel.setBackground(Color.WHITE);
+		ExercisePanel.setLayout(new BorderLayout());
 		ExercisePanel.setVisible(false);
 		GUI_Sports s = new GUI_Sports();
-		ExercisePanel.add(GUI_Sports.SportsPanel);
+		ExercisePanel.add(GUI_Sports.SportsPanel, BorderLayout.CENTER);
 		add(ExercisePanel);	
 		
 		// 칼로리 사전 Panel
@@ -271,7 +313,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	{
 		String ButtonString = e.getActionCommand();
 	
-		if(ButtonString.contentEquals("음식 추가"))
+		if(ButtonString.contentEquals("1"))
 		{
 			AddFoodPanel.setVisible(true);
 			ManagePanel.setVisible(false);
@@ -279,7 +321,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			CalDictionPanel.setVisible(false);
 		}
 		
-		else if(ButtonString.contentEquals("식단 관리"))
+		else if(ButtonString.contentEquals("2"))
 		{
 			AddFoodPanel.setVisible(false);
 			ManagePanel.setVisible(true);
@@ -287,7 +329,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			CalDictionPanel.setVisible(false);
 		}
 		
-		else if(ButtonString.contentEquals("운동"))
+		else if(ButtonString.contentEquals("3"))
 		{
 			AddFoodPanel.setVisible(false);
 			ManagePanel.setVisible(false);

@@ -12,9 +12,7 @@ public class GUI_Sports extends JFrame implements ActionListener{
 	JTextField text_minmax;
 	
 	public GUI_Sports() {
-		/*super("¿îµ¿");
-		setSize(850,300);
-		setLayout(new FlowLayout());*/
+	
 		SportsPanel.setLayout(new GridLayout(4,1));
 		SportsPanel.setBackground(Color.WHITE);
 		JPanel panel1 = new JPanel();
@@ -45,17 +43,18 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		button2.addActionListener(this);
 		button3.addActionListener(this);
 		
-		
+	
 		panel1.setBackground(Color.WHITE);
 		panel2.setBackground(Color.WHITE);
 		panel3.setBackground(Color.WHITE);
 		panel4.setBackground(Color.WHITE);
+		
 		SportsPanel.add(panel1);
 		SportsPanel.add(panel2);
 		SportsPanel.add(panel3);
 		SportsPanel.add(panel4);
-		add(SportsPanel);
 		
+		add(SportsPanel);		
 	}
 	public void actionPerformed(ActionEvent e) {
 		String ButtonString = e.getActionCommand();

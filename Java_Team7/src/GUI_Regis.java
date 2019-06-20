@@ -136,9 +136,9 @@ public class GUI_Regis extends JFrame implements ActionListener{
 	}
 	
 	
-	public static void main(String[] agrs)
+	/*public static void main(String[] agrs)
 	{
 		GUI_Regis g = new GUI_Regis();
 		g.setVisible(true);
-	}
+	}*/
 }
