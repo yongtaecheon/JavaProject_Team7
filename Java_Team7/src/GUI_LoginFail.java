@@ -17,9 +17,9 @@ public class GUI_LoginFail extends JFrame implements ActionListener{
 		ImageIcon icon = new ImageIcon(changedimg);
 		
 		
-		JLabel text = new JLabel("잘못된 비밀번호 입니다!");
+		JLabel text = new JLabel("잘못된 아이디이거나, 비밀번호 입니다!");
 		text.setIcon(icon);
-		text.setBounds(50,50,250,20);
+		text.setBounds(20,50,250,20);
 		add(text);
 		JButton closeButton = new JButton("확인");
 		closeButton.setBounds(110,90,60,40);

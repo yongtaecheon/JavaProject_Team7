@@ -40,8 +40,22 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	{
 		super("식단 관리 프로그램");
 		setSize(1200,650);
-		
+		getContentPane().setBackground(Color.white);
 		setLayout(null);
+		
+		//로고 추가
+		ImageIcon icon2 = new ImageIcon("Yodamain.png");
+		JPanel LogoPanel = new JPanel() {
+		public void paintComponent(Graphics g) {
+    		Dimension d = getSize();
+    		g.drawImage(icon2.getImage(), 0, 0, d.width, d.height, null);	
+    		setOpaque(false);
+    		super.paintComponent(g);
+    	}
+		};
+		LogoPanel.setBounds(870, 400, 300, 200);
+		add(LogoPanel);
+		//
 		
 		JPanel ButtonPanel = new JPanel();
 		ButtonPanel.setLayout(null);
@@ -71,13 +85,12 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		
 		// 음식 추가 Panel
 		AddFoodPanel.setBounds(150, 0, 700, 650);
-		AddFoodPanel.setBackground(Color.RED);
 		AddFoodPanel.setLayout(new BorderLayout());
 		AddFoodPanel.setVisible(false);
 		
 		JPanel FoodinnerPanel = new JPanel();
 		FoodinnerPanel.setLayout(null);
-		
+		FoodinnerPanel.setBackground(Color.WHITE);
 		JLabel Breakfast = new JLabel("아침");
 		Breakfast.setBounds(100, 200, 40, 20);
 		FoodinnerPanel.add(Breakfast);
@@ -128,17 +141,19 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		
 		// 식단 관리 Panel
 		ManagePanel.setBounds(150, 0, 700, 650);
-		ManagePanel.setBackground(Color.YELLOW);
+		ManagePanel.setBackground(Color.WHITE);
 		ManagePanel.setVisible(false);
-		ManagePanel.setLayout(new GridLayout(2,2));
+		ManagePanel.setLayout(null);
 		add(ManagePanel);
-        BMImanage.setBounds(320,200,600,200);
+        BMImanage.setBounds(250,270,500,100);
       
         JLabel Manage = new JLabel("오늘 하루의 평가 :");
         JLabel Bmi = new JLabel("현재 몸상태    : ");
-        Bmi.setBounds(200,250,100,100);
-        Manage.setBounds(200,150,150,100);
-        manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+        Manage.setBounds(90,170,150,100);
+        Bmi.setBounds(90,270,100,100);
+        
+        manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));// 칼로리 메세지
+        manage.setBounds(200, 170, 500, 100);
         ManagePanel.add(Manage);//오늘 하루 섭취한 calory,권장칼로리
         ManagePanel.add(manage);
         ManagePanel.add(Bmi);// 자신의 BMI와 몸상태 판단
@@ -148,7 +163,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		
 		// 운동 Panel
 		ExercisePanel.setBounds(150, 0, 700, 650);
-		//ExercisePanel.setBackground(Color.WHITE);
+		ExercisePanel.setBackground(Color.WHITE);
 		ExercisePanel.setVisible(false);
 		GUI_Sports s = new GUI_Sports();
 		ExercisePanel.add(GUI_Sports.SportsPanel);
@@ -163,23 +178,23 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		add(CalDictionPanel);
 	
 		// 내 정보 패널
-		Heightlabel.setBounds(900, 250, 70, 20);
-		myHeightlabel.setBounds(1050, 250, 70, 20);
+		Heightlabel.setBounds(900, 220, 70, 20);
+		myHeightlabel.setBounds(1050, 220, 70, 20);
 		add(Heightlabel);
 		add(myHeightlabel);
 		
-	    Weightlabel.setBounds(900, 300, 70, 20);
-	    myWeightlabel.setBounds(1050, 300, 70, 20);
+	    Weightlabel.setBounds(900, 270, 70, 20);
+	    myWeightlabel.setBounds(1050, 270, 70, 20);
 	    add(Weightlabel);
 	    add(myWeightlabel);
 	    
-	  	BMIlabel.setBounds(900, 350, 70, 20);
-	    myBMIlabel.setBounds(1050, 350, 70, 20);
+	  	BMIlabel.setBounds(900, 320, 70, 20);
+	    myBMIlabel.setBounds(1050, 320, 70, 20);
 	    add(BMIlabel); 
 	    add(myBMIlabel);
 	    
-	    Genderlabel.setBounds(900, 400, 70, 20);
-	    myGenderlabel.setBounds(1050, 400, 70, 20);
+	    Genderlabel.setBounds(900, 370, 70, 20);
+	    myGenderlabel.setBounds(1050, 370, 70, 20);
 	    add(Genderlabel);
 	    add(myGenderlabel);
 	    

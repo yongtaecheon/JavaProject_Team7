@@ -16,11 +16,12 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		setSize(850,300);
 		setLayout(new FlowLayout());*/
 		SportsPanel.setLayout(new GridLayout(4,1));
-		
+		SportsPanel.setBackground(Color.WHITE);
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new FlowLayout());
 		JLabel label1 = new JLabel("운동명:"); text_sportsName = new JTextField(7);JLabel label2 = new JLabel("시간(분):");text_time = new JTextField(5);JButton button1 = new JButton("시간 설정");
 		panel1.add(label1); panel1.add(text_sportsName); panel1.add(label2); panel1.add(text_time); panel1.add(button1);
+		
 		
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new FlowLayout());
@@ -29,7 +30,7 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		
 		JPanel panel3 = new JPanel();
 		panel3.setLayout(new FlowLayout());
-		JButton button3 = new JButton("최대 운동시간");text_minmax = new JTextField(60);
+		JButton button3 = new JButton("최대 운동시간");text_minmax = new JTextField(50);
 		panel3.add(button3);panel3.add(text_minmax);
 		
 		JPanel panel4 = new JPanel();
@@ -44,6 +45,11 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		button2.addActionListener(this);
 		button3.addActionListener(this);
 		
+		
+		panel1.setBackground(Color.WHITE);
+		panel2.setBackground(Color.WHITE);
+		panel3.setBackground(Color.WHITE);
+		panel4.setBackground(Color.WHITE);
 		SportsPanel.add(panel1);
 		SportsPanel.add(panel2);
 		SportsPanel.add(panel3);
@@ -55,9 +61,12 @@ public class GUI_Sports extends JFrame implements ActionListener{
 		String ButtonString = e.getActionCommand();
 		if(ButtonString.equals("시간 설정")){
 			spo.setTime(text_sportsName.getText(), Double.parseDouble(text_time.getText()));
+			text_sportsName.setText("");
+			text_time.setText("");
 		}
 		else if(ButtonString.equals("운동량 보기")) {
 			text_gettime.setText(spo.getTime(text_sportsName2.getText()));
+			text_sportsName2.setText("");
 		}
 		else if(ButtonString.equals("최대 운동시간")) {
 			text_minmax.setText(spo.minmaxSports());
