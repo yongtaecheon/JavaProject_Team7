@@ -12,8 +12,9 @@ public class GUI_Regis extends JFrame implements ActionListener{
 	
 	private static JPanel MyPanel = new JPanel();
 	
-	private static JLabel TitleLabel = new JLabel("신규 회원 정보");
+	private static JLabel TitleLabel = new JLabel("신규 회원 정보 등록");
 	
+	private static JLabel PictureLabel = new JLabel("Picture");
 	private static JLabel NameLabel = new JLabel("Name");
 	private static JLabel PasswordLabel = new JLabel("Password");
 	private static JLabel HeightLabel = new JLabel("Height");
@@ -27,12 +28,20 @@ public class GUI_Regis extends JFrame implements ActionListener{
 	private static JCheckBox GenderField1 = new JCheckBox("남자");
 	private static JCheckBox GenderField2 = new JCheckBox("여자");
 	
+	public static JButton AddPicButton = new JButton();
 	private static JButton FinishButton = new JButton("회원 가입 완료");
+	
+	GUI_AddPicture a = new GUI_AddPicture();	
+	
+	ImageIcon temp1 = new ImageIcon("Plus.png");
+    Image temp2 = temp1.getImage();
+    Image changedimg = temp2.getScaledInstance(20,20, Image.SCALE_SMOOTH);
+    ImageIcon addpictureicon = new ImageIcon(changedimg); 
 	
 	public GUI_Regis()
 	{
 		super("신규 회원 정보 등록");
-		setBounds(400,300,300,300);
+		setBounds(400,300,300,400);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -40,30 +49,40 @@ public class GUI_Regis extends JFrame implements ActionListener{
 		
 		TitleLabel.setBounds(30,10,200,20);//제목
 		MyPanel.add(TitleLabel);
-		NameLabel.setBounds(30,40,50,20);//이름
+		PictureLabel.setBounds(30, 65, 50, 20);
+		MyPanel.add(PictureLabel);
+		AddPicButton.setBounds(175, 40, 70, 70);
+		AddPicButton.addActionListener(a.new OpenActionListener());
+		AddPicButton.setBackground(Color.WHITE);
+		AddPicButton.setIcon(addpictureicon);
+		AddPicButton.setPreferredSize(new Dimension(45,28));
+		AddPicButton.setFocusPainted(false);
+		AddPicButton.setContentAreaFilled(false);
+		MyPanel.add(AddPicButton);
+		NameLabel.setBounds(30,120,50,20);//이름
 		MyPanel.add(NameLabel);	
-		PasswordLabel.setBounds(30,70,70,20);//비밀번호
+		PasswordLabel.setBounds(30,150,70,20);//비밀번호
 		MyPanel.add(PasswordLabel);	
-		HeightLabel.setBounds(30,100,50,20);//키
+		HeightLabel.setBounds(30,180,50,20);//키
 		MyPanel.add(HeightLabel);	
-		WeightLabel.setBounds(30,130,50,20);//몸무게
+		WeightLabel.setBounds(30,210,50,20);//몸무게
 		MyPanel.add(WeightLabel);	
-		GenderLabel.setBounds(30,160,50,20);//성별
+		GenderLabel.setBounds(30,240,50,20);//성별
 		MyPanel.add(GenderLabel);
 		
-		NameField.setBounds(150,40,120,20);//이름 입력
+		NameField.setBounds(150,120,120,20);//이름 입력
 		MyPanel.add(NameField);
-		PasswordField.setBounds(150,70,120,20);//비밀번호 입력
+		PasswordField.setBounds(150,150,120,20);//비밀번호 입력
 		MyPanel.add(PasswordField);
-		HeightField.setBounds(150,100,120,20);//키 입력
+		HeightField.setBounds(150,180,120,20);//키 입력
 		MyPanel.add(HeightField);
-		WeightField.setBounds(150,130,120,20);//몸무게 입력
+		WeightField.setBounds(150,210,120,20);//몸무게 입력
 		MyPanel.add(WeightField);
-		GenderField1.setBounds(145,160,55,20);//성별 선택
-		GenderField2.setBounds(200,160,55,20);
+		GenderField1.setBounds(145,240,55,20);//성별 선택
+		GenderField2.setBounds(200,240,55,20);
 		MyPanel.add(GenderField1);
 		MyPanel.add(GenderField2);
-		FinishButton.setBounds(70,200,140,30);
+		FinishButton.setBounds(70,300,140,30);
 		FinishButton.addActionListener(this);
 		MyPanel.add(FinishButton);
 		
@@ -116,4 +135,10 @@ public class GUI_Regis extends JFrame implements ActionListener{
 		}
 	}
 	
+	
+	public static void main(String[] agrs)
+	{
+		GUI_Regis g = new GUI_Regis();
+		g.setVisible(true);
+	}
 }

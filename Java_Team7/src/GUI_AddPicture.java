@@ -7,30 +7,7 @@ public class GUI_AddPicture extends JFrame{
 	Container contentPane;
 	JLabel imageLabel = new JLabel();
 	
-	GUI_AddPicture()
-	{
-		setTitle("File Open");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		contentPane = getContentPane();
-		contentPane.add(imageLabel);
-		createMenu();
-		setSize(300,200);
-		setVisible(true);
-	}
-	
-	void createMenu()
-	{
-		JMenuBar mb = new JMenuBar();
-		JMenu fileMenu = new JMenu("File");
-		JMenuItem openItem = new JMenuItem("Open");
-		
-		openItem.addActionListener(new OpenActionListener());
-		fileMenu.add(openItem);
-		mb.add(fileMenu);
-		this.setJMenuBar(mb);
-	}
-	
-	class OpenActionListener implements ActionListener
+	public class OpenActionListener implements ActionListener
 	{
 		JFileChooser chooser;
 		
@@ -52,9 +29,15 @@ public class GUI_AddPicture extends JFrame{
 				return;
 			}
 			
-			String filePath = chooser.getSelectedFile().getPath();
-			imageLabel.setIcon(new ImageIcon(filePath));
-			pack();
+			String filePath = chooser.getSelectedFile().getPath(); // 파일 경로
+			
+			ImageIcon icon = new ImageIcon(filePath);
+			Image img = icon.getImage();
+			Image newimg = img.getScaledInstance(GUI_Regis.AddPicButton.getWidth(), 
+					GUI_Regis.AddPicButton.getHeight(), java.awt.Image.SCALE_SMOOTH);
+			icon = new ImageIcon(newimg);
+			
+			GUI_Regis.AddPicButton.setIcon(icon);
 			
 		}
 		
