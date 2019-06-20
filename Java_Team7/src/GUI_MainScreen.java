@@ -189,6 +189,18 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		add(CalDictionPanel);
 	
 		// 내 정보 패널
+		ImageIcon usericon = new ImageIcon(GUI_AddPicture.filePath);
+		JPanel PicPanel = new JPanel(){
+			public void paintComponent(Graphics g) {
+	    		Dimension d2 = getSize();
+	    		g.drawImage(usericon.getImage(), 0, 0, d2.width, d2.height, null);	
+	    		setOpaque(false);
+	    		super.paintComponent(g);
+	    	}
+			};
+		PicPanel.setBounds(910, 10, 200, 200);
+		add(PicPanel);
+		
 		Heightlabel.setBounds(900, 220, 70, 20);
 		myHeightlabel.setBounds(1050, 220, 70, 20);
 		add(Heightlabel);
