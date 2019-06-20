@@ -10,7 +10,7 @@ public class Login{
 	static User u = new User();
 	static Scanner keyboard = new Scanner(System.in);
 	
-	public static User createFile(String name, String password, double height, double weight, String gender) {
+	public static User createFile(String name, String filePath, String password, double height, double weight, String gender) {
 		PrintWriter outputStream  = null;
 		try {
 			outputStream = new PrintWriter(new FileOutputStream(name+".txt"));
@@ -22,10 +22,12 @@ public class Login{
 		//System.out.println("키(m) 몸무게(kg) 성별(m/f) 입력:");
 		//keyboard부분을 gettext로 바꾸어 입력.
 		u.setName(name);
+		u.setFilepath(filePath);
 		u.setHeight(height);
 		u.setWeight(weight);
 		u.setGender(gender); 
 		u.setBMI(u.getHeight(), u.getWeight());
+		outputStream.println(filePath);
 		outputStream.println("<키>"); outputStream.println(u.getHeight());
 		outputStream.println("<몸무게>"); outputStream.println(u.getWeight());
 		outputStream.println("<성별>"); outputStream.println(u.getGender());
@@ -43,6 +45,7 @@ public class Login{
 			u.setName(name);
 			String scan_password = inputStream.next();
 				if(scan_password.equals(password)) {
+					GUI_AddPicture.filePath = inputStream.next();
 					if(inputStream.next().equals("<키>")) {
 						u.setHeight(inputStream.nextDouble());	
 					}

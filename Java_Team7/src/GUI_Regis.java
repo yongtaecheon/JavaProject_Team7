@@ -101,7 +101,7 @@ public class GUI_Regis extends JFrame implements ActionListener{
 		else
 			GENDER = "f";
 		
-		GUI_Login.MainUser = Login.createFile(NAME, PASSWORD, HEIGHT, WEIGHT, GENDER);
+		GUI_Login.MainUser = Login.createFile(NAME, GUI_AddPicture.filePath, PASSWORD, HEIGHT, WEIGHT, GENDER);
 		
 		GUI_Ok o = new GUI_Ok();// 회원 가입 완료 창
 		dispose();

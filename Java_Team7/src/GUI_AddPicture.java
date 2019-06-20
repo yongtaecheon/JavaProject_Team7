@@ -6,6 +6,7 @@ import java.awt.*;
 public class GUI_AddPicture extends JFrame{
 	Container contentPane;
 	JLabel imageLabel = new JLabel();
+	public static String filePath;
 	
 	public class OpenActionListener implements ActionListener
 	{
@@ -29,7 +30,7 @@ public class GUI_AddPicture extends JFrame{
 				return;
 			}
 			
-			String filePath = chooser.getSelectedFile().getPath(); // 파일 경로
+			filePath = chooser.getSelectedFile().getPath(); // 파일 경로
 			
 			ImageIcon icon = new ImageIcon(filePath);
 			Image img = icon.getImage();

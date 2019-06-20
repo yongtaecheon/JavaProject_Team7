@@ -23,12 +23,14 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 	
 	private JLabel manage = new JLabel(); // 식단 관리
 	private JLabel BMImanage = new JLabel(GUI_Login.MainUser.calculateBMI());
-	   
+	private JLabel Nutmanage = new JLabel();   
+	
 	private JTextField BField = new JTextField();
 	private JTextField LField = new JTextField();
 	private JTextField DField = new JTextField();
 	
-	
+	private Font font = new Font("SansSerif", Font.BOLD, 10);
+			
 	ImageIcon I1 = new ImageIcon("Plus.png");
     Image errorimg = I1.getImage();
     Image changedimg = errorimg.getScaledInstance(20,20, Image.SCALE_SMOOTH);
@@ -145,15 +147,24 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 		ManagePanel.setVisible(false);
 		ManagePanel.setLayout(null);
 		add(ManagePanel);
-        BMImanage.setBounds(250,270,500,100);
       
         JLabel Manage = new JLabel("오늘 하루의 평가 :");
         JLabel Bmi = new JLabel("현재 몸상태    : ");
-        Manage.setBounds(90,170,150,100);
-        Bmi.setBounds(90,270,100,100);
+        JLabel Nut = new JLabel("영양소 섭취량: ");
         
+        Manage.setBounds(90,100,150,100); //x, y , width, height
+        manage.setBounds(200, 100, 500, 100);
         manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));// 칼로리 메세지
-        manage.setBounds(200, 170, 500, 100);
+        
+        Nut.setBounds(90,250,150,100);
+        Nutmanage.setBounds(200,250,500,100);
+        Nutmanage.setText(FoodManagemnet.getNutrient(GUI_Login.MainUser));
+        
+        Bmi.setBounds(90,400,100,100);
+        BMImanage.setBounds(250,400,500,100);
+        
+        ManagePanel.add(Nut);
+        ManagePanel.add(Nutmanage);
         ManagePanel.add(Manage);//오늘 하루 섭취한 calory,권장칼로리
         ManagePanel.add(manage);
         ManagePanel.add(Bmi);// 자신의 BMI와 몸상태 판단
@@ -212,6 +223,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
 			GUI_Login.MainUser.setFood(food);
 			manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+			Nutmanage.setText(FoodManagemnet.getNutrient(GUI_Login.MainUser));
 			BField.setText("");
 		}
 	}
@@ -224,6 +236,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
 			GUI_Login.MainUser.setFood(food);
 			manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+			Nutmanage.setText(FoodManagemnet.getNutrient(GUI_Login.MainUser));
 			LField.setText("");
 		}
 	}
@@ -236,6 +249,7 @@ public class GUI_MainScreen extends JFrame implements ActionListener{
 			FoodManagemnet.addFood(GUI_Login.MainUser.getName(), food);
 			GUI_Login.MainUser.setFood(food);
 			manage.setText(FoodManagemnet.showCal(GUI_Login.MainUser));
+			Nutmanage.setText(FoodManagemnet.getNutrient(GUI_Login.MainUser));
 			DField.setText("");
 		}
 	}

@@ -8,6 +8,7 @@ public class User {
    double calory;
    String[] food;
    int foodsize;//food배열의 크기
+   String filePath;
    public User() {
       height = 0;
       weight = 0;
@@ -23,6 +24,10 @@ public class User {
       this.gender = gender;
       food = new String[50];
       foodsize = 0;
+   }
+   
+   public void setFilepath(String filePath) {
+	   this.filePath = filePath;
    }
    
    public void setName(String name)

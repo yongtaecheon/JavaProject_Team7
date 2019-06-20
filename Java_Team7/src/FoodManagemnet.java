@@ -8,7 +8,7 @@ public class FoodManagemnet {
 	static Scanner keyboard = new Scanner(System.in);
 	static Food f = new Food();
 	
-	public static double[] getNutrient(User u) {
+	public static String getNutrient(User u) {
 		double[] nutrient = new double[5]; //ch(탄수화물), protein(단백질), fat(지방), sugar(설탕), na(나트륨) 순
 		f.readFoodFile();
 		for (int i=0; i < 5;i++) {
@@ -25,7 +25,7 @@ public class FoodManagemnet {
 				}
 			}	
 		}
-		return nutrient;
+		return String.format("탄수화물(g): %.2f, 단백질(g): %.2f, 지방(g): %.2f, 설탕(g): %.2f, 나트륨(mg): %.2f", nutrient[0], nutrient[1], nutrient[2],nutrient[3],nutrient[4]);
 	}
 	
 	public static String showCal(User u) {//loadfile 메소드로 부터 user를 return받아 총칼로리양을 계산하고 권장량인지 아닌지를 출력
